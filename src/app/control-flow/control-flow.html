@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-2">
+    <input type="checkbox" [(ngModel)]="isOfferCodeAvl" /> Do you have offer code
+    <br />
+    --{{ isOfferCodeAvl }}--
+  </div>
+  @if (isOfferCodeAvl === true) {
+    <div class="col-3">
+      <input type="text" class="form-control" placeholder="Enter offer code" />
+    </div>
+  }
+</div>
+<hr />
+<div class="row">
+  <div class="col-3">
+    @if (isSuccessDivVisible() === true) {
+      <div class="bg-success p-3">Success</div>
+    } @else {
+      <div class="bg-danger p-3">Danger</div>
+    }
+  </div>
+  <div class="col-3">
+    <button class="btn btn-success" (click)="toggleDivVisibility()">Toggle</button>
+  </div>
+</div>
+<hr />
+<div class="row">
+  <div class="col-3">
+    <input type="text" placeholder="%" class="form-control" [(ngModel)]="studentTotalMarks">
+    </div>
+     <div class="col-3">
+      @if(studentTotalMarks >= 90) {
+         <strong class="text-success" >Student Has A Grade</strong>
+      } @else if(studentTotalMarks >= 80 && studentTotalMarks < 90) {
+        <span class="text-secondary">Student Has B Grade</span>
+      } @else if(studentTotalMarks >= 60 && studentTotalMarks < 80) {
+        <span class="text-warning">Student Has C Grade</span>
+      } @else {
+        @if(studentTotalMarks == 0) {
+          <span>Enter Marks</span>
+        } @else {
+           <span class="text-danger">Student fails</span>
+        }
+
+      }
+     </div>
+
+</div>
+<hr />
+<div class="row">
+  <div class="col-3">
+    <ul>
+      @for(item of offerList; track $index) {
+        <li>{{ item }}</li>
+      }
+    </ul>
+    </div>
+      <div class="col-8 d-flex gap-2">
+        @for(item of productCategoryList; track $index) {
+            <button class="btn btn-primary"> {{ item }}</button>
+        }
+
+      </div>
+    </div>
+    <hr />
+<div class="row">
+  <div class="col-3">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Sr no</th>
+          <th>Name</th>
+          <th>Department</th>
+          <th>Is Manager</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(item of employeeList; track $index) {
+          <tr>
+            <td>{{$index +1}}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.department }}</td>
+            <td>{{ item.isManager }}</td>
+          </tr>
+        }
+
+
+      </tbody>
+    </table>
+    </div>
+    </div>

@@ -3,6 +3,7 @@ import { DataBinding } from './components/data-binding/data-binding';
 import {  SignalComponent } from './signal/signal';
 import { Variables } from './components/variables/variables';
 import { NotFound } from './not-found/not-found';
+import { ControlFlow } from './control-flow/control-flow';
 
 
 export const routes: Routes = [
@@ -24,7 +25,11 @@ export const routes: Routes = [
     component: Variables,
   },
   {
+    path: 'control-flow',
+    component: ControlFlow,
+  },
+  {
     path: '**',
     component: NotFound,
-  }
+  },
 ];
