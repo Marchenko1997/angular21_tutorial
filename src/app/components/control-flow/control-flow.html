@@ -81,6 +81,9 @@
             <td>{{ item.name }}</td>
             <td>{{ item.department }}</td>
             <td>{{ item.isManager }}</td>
+            <strong [ngClass]="item.isManager == true ? 'text-success' : 'text-danger'">
+              {{ item.isManager == true ? 'Yes' : 'No' }}
+            </strong>
           </tr>
         }
 
