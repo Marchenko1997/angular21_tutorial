@@ -1,0 +1,131 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+
+      <div class="card shadow">
+        <div class="card-header text-center">
+          <h4>User Registration</h4>
+        </div>
+
+        <div class="card-body">
+
+          <form #formData="ngForm">
+
+            <!-- ID -->
+            <div class="mb-3">
+              <label class="form-label">ID</label>
+              <input
+                type="number"
+                class="form-control"
+                name="id"
+                [(ngModel)]="userObj.id"
+              />
+            </div>
+
+            <!-- NAME -->
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                required
+                minlength="5"
+                [(ngModel)]="userObj.name"
+                #name="ngModel"
+              />
+
+              @if(name.touched && name.dirty){
+                <div class="text-danger">
+
+                  @if(name.errors?.['required']){
+                    <span>This field is required</span>
+                  }
+
+                  @if(name.errors?.['minlength']){
+                    <span>Minimum 5 characters required</span>
+                  }
+
+                </div>
+              }
+
+            </div>
+
+            <!-- USERNAME -->
+            <div class="mb-3">
+              <label class="form-label">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                name="username"
+                [(ngModel)]="userObj.username"
+              />
+            </div>
+
+            <!-- EMAIL -->
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                [(ngModel)]="userObj.email"
+              />
+            </div>
+
+            <!-- PASSWORD -->
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                [(ngModel)]="userObj.password"
+              />
+            </div>
+
+            <!-- CITY -->
+            <div class="mb-3">
+              <label class="form-label">City</label>
+              <input
+                type="text"
+                class="form-control"
+                name="city"
+                [(ngModel)]="userObj.city"
+              />
+            </div>
+
+            <!-- COUNTRY -->
+            <div class="mb-3">
+              <label class="form-label">Country</label>
+              <input
+                type="text"
+                class="form-control"
+                name="country"
+                [(ngModel)]="userObj.country"
+              />
+            </div>
+
+            <!-- SUBMIT -->
+            <div class="d-grid">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="formData.invalid"
+              >
+                Submit
+              </button>
+            </div>
+
+          </form>
+
+          <!-- DEBUG -->
+          <pre class="mt-3">{{ userObj | json }}</pre>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
